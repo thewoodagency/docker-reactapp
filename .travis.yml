@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jay/docker-reactapp -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jay/docker-reactapp npm run test
